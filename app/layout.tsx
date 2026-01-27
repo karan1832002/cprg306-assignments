@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SAIT Class B Demo",
+  title: "shopping-list-app",
   description: "Demonstration of Next.js and all its features",
 };
 

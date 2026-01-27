@@ -4,9 +4,12 @@ export default function StudentInfo() {
   return (
     <div>
       <p>Name: Karandeep Singh</p>
-      <Link href="https://github.com/karan1832002/cprg306-assignments.git">
-        https://github.com/karan1832002/cprg306-assignments.git
-      </Link>
+      <p>
+        GitHub:{" "}
+        <Link href="https://github.com/karan1832002/cprg306-assignments">
+          https://github.com/karan1832002/cprg306-assignments
+        </Link>
+      </p>
     </div>
   );
 }
