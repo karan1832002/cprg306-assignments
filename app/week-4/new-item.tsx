@@ -3,43 +3,36 @@
 import React, { useState } from "react";
 
 export default function NewItem() {
-  // State variables
+  
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
   const [nameTouched, setNameTouched] = useState(false);
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Advanced validation check
     if (!name || name.length < 2) {
       alert("Please enter a valid name (at least 2 characters).");
       return;
     }
     
-    // Create item object
     const item = {
       name,
       quantity,
       category,
     };
     
-    // Log to console
     console.log(item);
     
-    // Display alert
     alert(`Name: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
     
-    // Reset form
     setName("");
     setQuantity(1);
     setCategory("produce");
     setNameTouched(false);
   };
 
-  // Check if form is valid
   const isFormValid = name.trim().length >= 2;
 
   return (
@@ -47,7 +40,6 @@ export default function NewItem() {
       onSubmit={handleSubmit}
       className="bg-white shadow-md rounded-lg p-6 max-w-md space-y-4"
     >
-      {/* Name Field */}
       <div>
         <label className="block text-gray-700 font-medium mb-1">Name *</label>
         <input
@@ -68,7 +60,6 @@ export default function NewItem() {
         )}
       </div>
 
-      {/* Quantity Field */}
       <div>
         <label className="block text-gray-700 font-medium mb-1">Quantity *</label>
         <input
@@ -83,7 +74,6 @@ export default function NewItem() {
         <p className="text-gray-500 text-xs mt-1">Must be between 1 and 99</p>
       </div>
 
-      {/* Category Field */}
       <div>
         <label className="block text-gray-700 font-medium mb-1">Category *</label>
         <select
@@ -106,7 +96,6 @@ export default function NewItem() {
         </select>
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
         disabled={!isFormValid}
