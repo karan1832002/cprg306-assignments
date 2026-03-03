@@ -14,6 +14,8 @@ export default function Home() {
       <Link href="/week-5">Week 5 Sorting function</Link>
       <br />
       <Link href="/week-6">Week 6 w4+w5 </Link>
+      <br />
+      <Link href="/week-7">Week 7 Meal ideas</Link>
     </main>
   );
 
