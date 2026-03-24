@@ -18,6 +18,9 @@ export default function Home() {
       <Link href="/week-7">Week 7 Meal ideas</Link>
       <br />      
       <Link href="/week-8">Week 8 Authentication</Link>
+      <br />
+      <Link href="/week-10">Week 10 Firestore</Link>
+      
     </main>
   );
 
