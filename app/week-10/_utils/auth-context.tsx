@@ -11,6 +11,7 @@ import {
   GithubAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   type User,
 } from "firebase/auth";
@@ -19,7 +20,7 @@ import { auth } from "./firebase";
 type AuthContextType = {
   user: User | null;
   loading: boolean;
-  gitHubSignIn: () => Promise<unknown>;
+  gitHubSignIn: () => Promise<void>;
   firebaseSignOut: () => Promise<void>;
 };
 
@@ -30,12 +31,30 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const gitHubSignIn = async () => {
-    const provider = new GithubAuthProvider();
-    return signInWithPopup(auth, provider);
+    try {
+      const provider = new GithubAuthProvider();
+
+      // localhost -> popup
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        await signInWithPopup(auth, provider);
+      } else {
+        // vercel -> redirect
+        await signInWithRedirect(auth, provider);
+      }
+    } catch (error) {
+      console.error("GitHub Sign-in Error:", error);
+    }
   };
 
   const firebaseSignOut = async () => {
-    return signOut(auth);
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Sign-out Error:", error);
+    }
   };
 
   useEffect(() => {
